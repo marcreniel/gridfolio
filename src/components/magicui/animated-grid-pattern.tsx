@@ -19,8 +19,8 @@ interface GridPatternProps {
 }
 
 export function GridPattern({
-  width = 100,
-  height = 100,
+  width = 50,
+  height = 80,
   x = -1,
   y = -1,
   strokeDasharray = 0,
