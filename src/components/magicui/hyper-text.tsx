@@ -98,17 +98,21 @@ export default function HyperText({
   return (
     <div
       ref={containerRef}
-      className="overflow-hidden py-2 flex cursor-default scale-100"
+      className=" pt-2 flex cursor-default scale-100"
     >
       <AnimatePresence mode="wait">
         {displayText.map((letter, i) => (
           <motion.h1
             key={i}
-            className={cn("font-mono", letter === " " ? "w-3" : "", className)}
+            className={cn("font-mono", letter === " " ? "w-3" : "", className, "whitespace-pre-wrap text-left tracking-tighter text-black drop-shadow-[0_0px_8px_rgba(0,0,0,0.2)] text-5xl"
+            )}
             {...framerProps}
+            
           >
-            {letter.toUpperCase()}
+          <div className="absolute inset-0 bg-gradient-to-br from-white to-transparent filter blur-lg"/>
+          {letter.toUpperCase()}
           </motion.h1>
+          
         ))}
       </AnimatePresence>
     </div>

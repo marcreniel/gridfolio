@@ -6,9 +6,6 @@ import HyperText from "@/components/magicui/hyper-text";
 import ShineBorder from '@/components/magicui/shine-border';
 import { useRef, useEffect, useState } from 'react';
 
-import { cn } from "@/lib/utils";
-import { DotPattern } from "@/components/magicui/dot-pattern";
-
 export default function Skills() {
   const [visibleItems, setVisibleItems] = useState<Record<string, boolean>>({});
   const sectionRef = useRef(null);
@@ -65,7 +62,7 @@ export default function Skills() {
     },
     "Tools": {
       icon: <Users className="w-6 h-6" />,
-      items: ["Git", "Docker", "Kubernetes", "AWS", "GCP", "DigitalOcean", "Oracle Cloud"],
+      items: ["Git", "Docker", "Jira", "Kubernetes", "AWS", "GCP", "DigitalOcean", "Oracle Cloud"],
       gradient: "from-green-500 to-emerald-400",
       shineColors: ["#22C55E", "#34D399", "#4ADE80"], // green-500, emerald-400, green-400
       shadowColor: "rgba(34, 197, 94, 0.2)" // green-500 with opacity
@@ -75,14 +72,16 @@ export default function Skills() {
   return (
     <section 
       ref={sectionRef}
-      className="max-w-[90vw] mx-auto p-6 space-y-8 relative"
+      className="max-w-[90vw] mx-auto p-6 space-y-8 relative pt-[10vh] "
     >
       
-      <HyperText
-        className="text-4xl font-bold text-gray-900 font-sys lowercase"
-        text="skills"
-        animateOnLoad={visibleItems['title']}
-      />
+      <div className="flex justify-center items-center pb-6">
+        <HyperText
+          className="text-4xl font-bold text-gray-900 font-sys lowercase"
+          text="skills"
+          animateOnLoad={visibleItems['title']}
+        />
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {Object.entries(skills).map(([category, { items, icon, gradient, shineColors, shadowColor }], index) => (
@@ -92,7 +91,7 @@ export default function Skills() {
               if (el) itemRefs.current[category] = el;
             }}
             data-id={category}
-            className={`group relative rounded-xl overflow-hidden transition-all duration-700
+            className={`group relative rounded-lg overflow-hidden transition-all duration-700
                       ${visibleItems[category] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
             style={{
               boxShadow: `0 4px 20px ${shadowColor}`,
@@ -105,7 +104,7 @@ export default function Skills() {
               className="relative flex h-auto w-full flex-col bg-white/80 backdrop-blur-sm overflow-hidden rounded-lg pt-8 px-6 pb-8"
               color={shineColors}
             >
-              <div className="flex items-center gap-3 mb-6 justify-start w-full">
+              <div className="flex items-center gap-3 mb-6 justify-start w-full tracking-tighter">
                 <div className={`p-2 rounded-lg bg-gradient-to-br ${gradient} text-white`}>
                   {icon}
                 </div>
@@ -114,7 +113,7 @@ export default function Skills() {
                 </h3>
               </div>
               
-              <div className="flex flex-wrap gap-2 justify-start w-full">
+              <div className="flex flex-wrap gap-2 justify-start w-full tracking-tighter">
                 {items.map((skill) => (
                   <Badge
                     key={skill}
